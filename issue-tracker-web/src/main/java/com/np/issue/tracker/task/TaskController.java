@@ -1,4 +1,4 @@
-package com.np.isstracker.task;
+package com.np.issue.tracker.task;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
