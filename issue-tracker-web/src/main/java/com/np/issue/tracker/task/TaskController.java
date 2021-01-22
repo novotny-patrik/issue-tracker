@@ -3,10 +3,7 @@ package com.np.issue.tracker.task;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -51,6 +48,13 @@ public class TaskController {
     public String saveOrUpdate(@ModelAttribute TaskDto taskDto) {
         TaskDto savedTask = taskService.save(taskDto);
         log.debug("Saved task {}", savedTask);
+        return "redirect:/tasks";
+    }
+
+    // Thymeleaf link can not perform DELETE method, for this case use GET
+    @RequestMapping( value = "/task/delete/{id}", method = {RequestMethod.GET, RequestMethod.DELETE})
+    public String delete(@PathVariable String id) {
+        taskService.deleteById(id);
         return "redirect:/tasks";
     }
 

@@ -43,6 +43,11 @@ class TaskServiceImpl extends EntityDtoMapper<Task, TaskDto> implements TaskServ
     }
 
     @Override
+    public void deleteById(String id) {
+        taskRepository.deleteById(UUID.fromString(id));
+    }
+
+    @Override
     public Class<Task> getEntityClass() {
         return Task.class;
     }

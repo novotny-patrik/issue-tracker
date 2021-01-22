@@ -11,4 +11,6 @@ public interface TaskService {
     Optional<TaskDto> findById(UUID id);
 
     TaskDto save(TaskDto taskDto);
+
+    void deleteById(String id);
 }

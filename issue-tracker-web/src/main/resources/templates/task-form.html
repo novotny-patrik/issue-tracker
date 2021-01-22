@@ -25,6 +25,9 @@
                    th:value="${task.description}">
         </div>
         <input class="btn btn-primary" type="submit" id="submitButton" th:value="Save">
+        <span th:if="${task.id != null}">
+            <a th:href="${'/task/delete/' + task.id}" class="btn btn-danger">Delete</a>
+        </span>
     </form>
 </div>
 
