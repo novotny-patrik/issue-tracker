@@ -1,13 +1,16 @@
 package com.np.issue.tracker.task;
 
 import com.np.issue.tracker.mapper.EntityDtoMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 class TaskServiceImpl extends EntityDtoMapper<Task, TaskDto> implements TaskService {
 
     private final TaskRepository taskRepository;
@@ -22,6 +25,12 @@ class TaskServiceImpl extends EntityDtoMapper<Task, TaskDto> implements TaskServ
                 .stream()
                 .map(this::toDto)
                 .collect(Collectors.toUnmodifiableList());
+    }
+
+    @Override
+    public Optional<TaskDto> findById(UUID id) {
+        return taskRepository.findById(id)
+                .map(this::toDto);
     }
 
     @Override

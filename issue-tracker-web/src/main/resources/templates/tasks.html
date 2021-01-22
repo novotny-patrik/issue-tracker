@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Tasks</title>
-
     <link th:rel="stylesheet" th:href="@{webjars/bootstrap/5.0.0-beta1/css/bootstrap.min.css} "/>
-
 </head>
 <body>
 
@@ -23,7 +21,9 @@
 
             <tr th:each="task : ${tasks}">
                 <td th:text="${taskStat.index + 1}">1</td>
-                <td th:text="${task.title}">Title</td>
+                <td>
+                    <a th:href="${'/task/' + task.id}" th:text="${task.title}" target="_blank"></a>
+                </td>
                 <td th:text="${task.description}">Description</td>
             </tr>
         </table>
