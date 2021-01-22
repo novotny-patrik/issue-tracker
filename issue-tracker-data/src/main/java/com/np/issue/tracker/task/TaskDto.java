@@ -1,24 +1,17 @@
 package com.np.issue.tracker.task;
 
-import lombok.Builder;
-import lombok.Value;
+import lombok.*;
 
 import java.util.UUID;
 
-@Value
+@Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class TaskDto {
 
-    UUID id;
-    String title;
-    String description;
-
-    Task toEntity() {
-        return Task.builder()
-                .id(id)
-                .title(title)
-                .description(description)
-                .build();
-    }
+    private UUID id;
+    private String title;
+    private String description;
 
 }
