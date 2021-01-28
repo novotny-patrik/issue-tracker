@@ -1,0 +1,2 @@
+INSERT INTO PERSON (ID, LOGIN, NAME, PASSWORD) VALUES (random_uuid(), 'user1', 'User1 Name', 'psw');
+INSERT INTO PERSON (ID, LOGIN, NAME, PASSWORD) VALUES (random_uuid(), 'user2', 'User2 Name', 'psw');

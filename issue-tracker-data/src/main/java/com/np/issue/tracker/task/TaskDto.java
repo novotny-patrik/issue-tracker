@@ -1,16 +1,19 @@
 package com.np.issue.tracker.task;
 
-import lombok.*;
-
-import java.util.UUID;
+import com.np.issue.tracker.base.BaseDto;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 @Data
-@Builder
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public class TaskDto {
+@EqualsAndHashCode(callSuper = true)
+public class TaskDto extends BaseDto {
 
-    private UUID id;
     private String title;
     private String description;
 
