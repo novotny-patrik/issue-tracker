@@ -13,4 +13,6 @@ public interface TaskService {
     TaskDto save(TaskDto taskDto);
 
     void deleteById(String id);
+
+    List<TaskDto> findByPerson();
 }

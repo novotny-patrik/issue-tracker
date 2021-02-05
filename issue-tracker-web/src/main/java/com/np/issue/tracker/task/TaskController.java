@@ -1,11 +1,11 @@
 package com.np.issue.tracker.task;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -20,7 +20,7 @@ public class TaskController {
     }
 
     @GetMapping({"/task", "/task/{id}"})
-    public String task(Model model, @PathVariable(required = false) String id) {
+    public String task(Model model, @Nullable @PathVariable(required = false) String id) {
 
         TaskDto taskDto = new TaskDto();
 
@@ -64,21 +64,10 @@ public class TaskController {
         return "tasks";
     }
 
-    private void addMoreTestData() {
-        List.of(
-                TaskDto.builder()
-                        .title("Read a book")
-                        .description("Read a book before sleep.")
-                        .build(),
-                TaskDto.builder()
-                        .title("Clean workspace")
-                        .description("Throw away garbage and clean things up.")
-                        .build(),
-                TaskDto.builder()
-                        .title("Foo")
-                        .description("Foo bar")
-                        .build()
-        ).forEach(taskService::save);
+    @GetMapping("/tasks/my")
+    public String getMyTasks(Model model) {
+        model.addAttribute("tasks", taskService.findAll());
+        return "tasks";
     }
 
 }

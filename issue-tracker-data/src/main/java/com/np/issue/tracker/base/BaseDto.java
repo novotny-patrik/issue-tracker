@@ -14,7 +14,4 @@ public class BaseDto {
     public BaseDto() {
     }
 
-    public BaseDto(UUID id) {
-        this.id = id;
-    }
 }

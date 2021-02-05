@@ -1,17 +1,15 @@
 package com.np.issue.tracker;
 
-import com.np.issue.tracker.task.TaskDto;
-import com.np.issue.tracker.task.TaskService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import java.util.List;
-
 @SpringBootApplication
 @EnableJpaRepositories
+@Slf4j
 public class IssueTrackerApplication {
 
     public static void main(String[] args) {
@@ -19,21 +17,8 @@ public class IssueTrackerApplication {
     }
 
     @Bean
-    public CommandLineRunner runner(TaskService taskService) {
-        return (args) -> List.of(
-                TaskDto.builder()
-                        .title("Read a book")
-                        .description("Read a book before sleep.")
-                        .build(),
-                TaskDto.builder()
-                        .title("Clean workspace")
-                        .description("Throw away garbage and clean things up.")
-                        .build(),
-                TaskDto.builder()
-                        .title("Foo")
-                        .description("Foo bar")
-                        .build()
-        ).forEach(taskService::save);
+    public CommandLineRunner runner() {
+        return (args) -> log.debug("CommandLineRunner ran");
     }
 
 }

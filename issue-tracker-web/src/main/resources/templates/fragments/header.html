@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html  xml:lang="en"
+       xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:th="http://www.thymeleaf.org"
+       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+<body>
+<div class="container">
+
+    <div th:fragment="header">
+        <nav class="navbar navbar-inverse">
+            <div class="container">
+                <!--<div class="navbar-header">
+                    <a class="navbar-brand" th:href="@{/tasks}">Issue tracker</a>
+                </div>-->
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <!--li class="active"-->
+                        <!--<li><a th:href="@{/}">Welcome</a></li>-->
+                        <li><a th:href="@{/tasks}">All Tasks</a></li>
+                        <li><a th:href="@{/tasks/my}">My Tasks</a></li>
+                        <li><a th:href="@{/task}">Create Task</a></li>
+                        <li><a th:href="@{/h2-console}" target="_blank">H2</a></li>
+                        <!--<li><a th:href="@{/admin/h2}" target="_blank">H2</a></li>-->
+                    </ul>
+                    <ul class="nav navbar-nav pull-right" sec:authorize="isAuthenticated()">
+                        <li>
+                            <!--<p class="navbar-text">Welcome <div class="navbar-text" th:text="${#authentication.name}">User</div></p>-->
+                            <p class="navbar-text">Welcome <div class="navbar-text" th:text="User">User</div></p>
+                        </li>
+                        <li>
+                            <a id="navLogoutLink" class="btn btn-default" role="button"  th:href="@{/logout}">Logout</a>
+                        </li>
+                        <li>&nbsp;|&nbsp;</li>
+                    </ul>
+
+                    <ul class="nav navbar-nav pull-right" sec:authorize=" ! isAuthenticated()">
+                        <li><a id="navRegistrationLink" class="btn btn-default" role="button" th:href="@{/registration/form}">Register</a></li>
+                        <li><a id="navLoginLink" class="btn btn-default" role="button" th:href="@{/login/form}">Login</a></li>
+                        <li>&nbsp;|&nbsp;</li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
+
+</body>
+</html>

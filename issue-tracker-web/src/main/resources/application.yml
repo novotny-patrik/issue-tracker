@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:h2:~/testdb;AUTO_SERVER=TRUE
+    driverClassName: org.h2.Driver
+    username: sa
+    password: sa
+    initialization-mode: always
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create
+
+  h2:
+    console:
+      enabled: true
+
+logging:
+  level:
+    com.np.issue.tracker: trace
+

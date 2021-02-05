@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <!--<meta charset="UTF-8">-->
     <title>Tasks</title>
-    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/5.0.0-beta1/css/bootstrap.min.css} "/>
+    <!--<link th:rel="stylesheet" th:href="@{webjars/bootstrap/5.0.0-beta1/css/bootstrap.min.css} "/>-->
+
+    <th:block th:insert="fragments/head :: head"></th:block>
+
 </head>
 <body>
 
-<div class="container-lg">
+<div class="container">
+
+    <th:block th:insert="fragments/header :: header"></th:block>
+
     <div class="table-responsive">
         <h1>Tasks</h1>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
