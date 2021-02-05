@@ -52,9 +52,4 @@ class TaskServiceImpl implements TaskService {
     public void deleteById(String id) {
         taskRepository.deleteById(UUID.fromString(id));
     }
-
-    @Override
-    public List<TaskDto> findByPerson() {
-        return null;
-    }
 }
