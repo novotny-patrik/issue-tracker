@@ -1,4 +1,4 @@
-package com.np.issue.tracker;
+package com.np.issue.tracker.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

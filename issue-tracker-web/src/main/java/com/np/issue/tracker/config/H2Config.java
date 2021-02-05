@@ -1,4 +1,4 @@
-package com.np.issue.tracker;
+package com.np.issue.tracker.config;
 
 import org.h2.server.web.WebServlet;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Description;
 
 @Configuration
-public class Config {
+public class H2Config {
 
     /**
      * Access the H2 Console:

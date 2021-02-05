@@ -1,5 +1,7 @@
-package com.np.issue.tracker.task;
+package com.np.issue.tracker.controller;
 
+import com.np.issue.tracker.task.TaskDto;
+import com.np.issue.tracker.task.TaskService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;

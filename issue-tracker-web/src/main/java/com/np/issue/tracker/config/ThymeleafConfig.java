@@ -1,4 +1,4 @@
-package com.np.issue.tracker;
+package com.np.issue.tracker.config;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
