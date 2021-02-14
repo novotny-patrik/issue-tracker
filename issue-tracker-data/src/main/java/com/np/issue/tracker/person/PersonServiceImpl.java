@@ -2,19 +2,18 @@ package com.np.issue.tracker.person;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class PersonServiceImpl implements PersonService {
 
     private final PersonRepository personRepository;
-    private final PersonEntityToDtoConverter entityToDtoConverter;
-    private final PersonDtoToEntityConverter dtoToEntityConverter;
 
-    public PersonServiceImpl(
-            PersonRepository personRepository,
-            PersonEntityToDtoConverter entityToDtoConverter,
-            PersonDtoToEntityConverter dtoToEntityConverter) {
+    public PersonServiceImpl(PersonRepository personRepository) {
         this.personRepository = personRepository;
-        this.entityToDtoConverter = entityToDtoConverter;
-        this.dtoToEntityConverter = dtoToEntityConverter;
+    }
+
+    public Optional<Person> findByLogin(String login) {
+        return personRepository.findByLogin(login);
     }
 }
