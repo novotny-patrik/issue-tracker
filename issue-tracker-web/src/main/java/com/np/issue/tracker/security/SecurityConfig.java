@@ -23,9 +23,10 @@ import java.util.Map;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private static final String HAS_ANY_ROLE_ANONYMOUS = "hasAnyRole('ANONYMOUS', 'USER')";
-    private static final String HAS_ROLE_USER = "hasRole('USER')";
-    private static final String HAS_ROLE_ADMIN = "hasRole('ADMIN')";
+    private static final String ANONYMOUS_OR_USER = "hasAnyRole('ANONYMOUS', 'USER')";
+    private static final String ANONYMOUS = "hasRole('ANONYMOUS')";
+    private static final String USER = "hasRole('USER')";
+    private static final String ADMIN = "hasRole('ADMIN')";
 
     private final UserDetailsService userDetailsService;
 
@@ -44,8 +45,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests(
                 authorizeRequests -> authorizeRequests
-                        .antMatchers("/admin/h2/**").permitAll()
-                        .antMatchers("/**").access(HAS_ROLE_USER)
+                        .antMatchers("/registration/*").access(ANONYMOUS)
+                        .antMatchers("/login/*").access(ANONYMOUS_OR_USER)
+                        .antMatchers("/logout/*").access(ANONYMOUS_OR_USER)
+                        //.antMatchers("/admin/*").access(ADMIN)
+                        .antMatchers("/admin/h2/**").access(ADMIN)
+                        .antMatchers("/**").access(USER)
         );
 
         // The default AccessDeniedException

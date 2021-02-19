@@ -6,4 +6,6 @@ public interface PersonService {
 
     Optional<Person> findByLogin(String login);
 
+    Person save(Person person);
+
 }

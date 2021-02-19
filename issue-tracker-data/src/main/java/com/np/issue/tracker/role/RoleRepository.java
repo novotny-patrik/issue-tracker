@@ -1,4 +1,4 @@
-package com.np.issue.tracker.person;
+package com.np.issue.tracker.role;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -7,8 +7,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-interface PersonRepository extends JpaRepository<Person, UUID> {
+interface RoleRepository extends JpaRepository<Role, UUID> {
 
-    Optional<Person> findByLogin(String login);
+    Optional<Role> findByName(String name);
 
 }

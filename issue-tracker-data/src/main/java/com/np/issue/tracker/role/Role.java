@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -18,10 +19,12 @@ import java.util.Set;
 @SuperBuilder
 public class Role extends BaseEntity implements Serializable {
 
+    public static final String ROLE_USER = "ROLE_USER";
+
     private String name;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "roles")
-    private Set<Person> persons;
+    private Set<Person> persons = new HashSet<>();
 
     public Role() {
     }

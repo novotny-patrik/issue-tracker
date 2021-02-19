@@ -17,7 +17,7 @@ class TaskServiceImpl implements TaskService {
     private final TaskDtoToEntityConverter dtoToEntityConverter;
     private final TaskEntityToDtoConverter entityToDtoConverter;
 
-    public TaskServiceImpl(
+    TaskServiceImpl(
             TaskRepository taskRepository,
             TaskDtoToEntityConverter dtoToEntityConverter,
             TaskEntityToDtoConverter entityToDtoConverter) {
