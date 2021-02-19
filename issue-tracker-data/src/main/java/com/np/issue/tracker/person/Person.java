@@ -8,6 +8,7 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.security.Principal;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,9 +17,9 @@ import java.util.Set;
 @Setter
 @Entity
 @SuperBuilder
-public class Person extends BaseEntity {
+public class Person extends BaseEntity implements Principal {
 
-    private String name;
+    private String personName;
     private String login;
     private String password;
 
@@ -41,10 +42,19 @@ public class Person extends BaseEntity {
     @Override
     public String toString() {
         return "Person{" +
-                "name='" + name + '\'' +
+                "name='" + personName + '\'' +
                 ", login='" + login + '\'' +
                 ", roles=" + Arrays.toString(roles.stream().map(Role::getName).toArray()) +
                 ", assignedTasks=" + Arrays.toString(assignedTasks.stream().map(Task::getId).toArray()) +
                 '}';
+    }
+
+    /**
+     * @return name for security
+     * @see Principal
+     */
+    @Override
+    public String getName() {
+        return getLogin();
     }
 }

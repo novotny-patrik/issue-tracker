@@ -1,5 +1,6 @@
 package com.np.issue.tracker.task;
 
+import com.np.issue.tracker.person.Person;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +32,14 @@ class TaskServiceImpl implements TaskService {
                 .stream()
                 .map(entityToDtoConverter::convert)
                 .collect(Collectors.toUnmodifiableList());
+    }
+
+    @Override
+    public List<TaskDto> findByPerson(Person person) {
+        return person.getAssignedTasks()
+                .stream()
+                .map(entityToDtoConverter::convert)
+                .collect(Collectors.toList());
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.np.issue.tracker.config;
+package com.np.issue.tracker.security;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -37,8 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(final AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .userDetailsService(userDetailsService)
-                .passwordEncoder(passwordEncoder())
-        ;
+                .passwordEncoder(passwordEncoder());
     }
 
     @Override

@@ -10,7 +10,7 @@ public class PersonDtoToEntityConverter implements Converter<PersonDto, Person> 
     public Person convert(PersonDto personDto) {
         return Person.builder()
                 .id(personDto.getId())
-                .name(personDto.getName())
+                .personName(personDto.getName())
                 .login(personDto.getLogin())
                 .password(personDto.getPassword())
                 .build();

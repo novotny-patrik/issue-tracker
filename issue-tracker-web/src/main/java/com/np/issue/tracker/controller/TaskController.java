@@ -1,5 +1,8 @@
 package com.np.issue.tracker.controller;
 
+import com.np.issue.tracker.person.Person;
+import com.np.issue.tracker.person.PersonService;
+import com.np.issue.tracker.security.UserContext;
 import com.np.issue.tracker.task.TaskDto;
 import com.np.issue.tracker.task.TaskService;
 import lombok.extern.slf4j.Slf4j;
@@ -16,9 +19,16 @@ import java.util.UUID;
 public class TaskController {
 
     private final TaskService taskService;
+    private final PersonService personService;
+    private final UserContext userContext;
 
-    public TaskController(TaskService taskService) {
+    public TaskController(
+            TaskService taskService,
+            PersonService personService,
+            UserContext userContext) {
         this.taskService = taskService;
+        this.personService = personService;
+        this.userContext = userContext;
     }
 
     @GetMapping({"/task", "/task/{id}"})
@@ -68,7 +78,13 @@ public class TaskController {
 
     @GetMapping("/tasks/my")
     public String getMyTasks(Model model) {
-        model.addAttribute("tasks", taskService.findAll());
+
+        Optional<Person> currentUser = userContext.getCurrentUser();
+        if (currentUser.isEmpty()) {
+            return "redirect:/login/form";
+        }
+
+        model.addAttribute("tasks", taskService.findByPerson(currentUser.get()));
         return "tasks";
     }
 

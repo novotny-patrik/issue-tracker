@@ -2,11 +2,14 @@ package com.np.issue.tracker.base;
 
 import lombok.Data;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import java.sql.Timestamp;
 import java.util.UUID;
 
 @Data
@@ -17,6 +20,12 @@ public class BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+
+    @CreationTimestamp
+    private Timestamp created;
+
+    @UpdateTimestamp
+    private Timestamp updated;
 
     public BaseEntity() {
     }
